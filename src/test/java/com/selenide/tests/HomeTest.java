@@ -14,8 +14,7 @@ class HomeTest extends AbstractTest {
     @DisplayName("Open test page on base page and assertIf")
     public void openBasePage() {
         log.info("Opening base page.");
-        Home home = new Home();
-        assertThat("APPLICATION TEST DRIVE.").isEqualTo(home.getApplicationTestDriveText());
+        assertThat("APPLICATION TEST DRIVE.").isEqualTo(this.pageFactory.newHomePage().getApplicationTestDriveText());
     }
 
 
