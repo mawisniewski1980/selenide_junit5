@@ -11,9 +11,9 @@ public class HomeElements extends AbstractElements {
 
     @Override
     protected void addPageElements() {
-        addField(APPLICATION_TEST_DRIVE, ".container .text h2");
-        addField(HOME_PAGE_FRONT_END, ".container .text h2");
-        addField(ADMINISTRATOR_BACKEND, ".container .text h2");
+        addElement(APPLICATION_TEST_DRIVE, ".container .text h2");
+        addElement(HOME_PAGE_FRONT_END, ".container .text h2");
+        addElement(ADMINISTRATOR_BACKEND, ".container .text h2");
 
     }
 

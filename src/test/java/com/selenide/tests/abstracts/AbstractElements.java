@@ -20,19 +20,19 @@ public abstract class AbstractElements {
 
     protected abstract void addPageElements();
 
-    public final void addField(Enum name, String field) {
-        this.pageElements.put(name, field);
+    public final void addElement(Enum name, String selector) {
+        this.pageElements.put(name, selector);
     }
 
-    public final String getField(Enum name) {
+    public final String getElementSelector(Enum name) {
         return this.pageElements.get(name);
     }
 
     public final SelenideElement getElement(Enum name) {
-        return $(getField(name));
+        return $(getElementSelector(name));
     }
 
     public final ElementsCollection getElementsCollection(Enum name) {
-        return $$(getField(name));
+        return $$(getElementSelector(name));
     }
 }
