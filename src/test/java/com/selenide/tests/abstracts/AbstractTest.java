@@ -1,5 +1,6 @@
 package com.selenide.tests.abstracts;
 
+import com.codeborne.selenide.Selenide;
 import com.selenide.tests.factories.PageFactory;
 import com.selenide.tests.interfaces.InterfacesTest;
 import org.junit.jupiter.api.AfterEach;
@@ -21,6 +22,7 @@ public abstract class AbstractTest implements InterfacesTest {
     @BeforeEach
     void setUp() {
         log.info("before each test method - in a class ................ ");
+        Selenide.open("https://s1.demo.opensourcecms.com/wordpress/wp-login.php");
     }
 
     @AfterEach

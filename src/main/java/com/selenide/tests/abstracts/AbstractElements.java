@@ -8,6 +8,7 @@ import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.selenide.tests.enums.EnumElements.WELCOME_PANEL;
 
 public abstract class AbstractElements {
 
@@ -16,6 +17,7 @@ public abstract class AbstractElements {
     public AbstractElements() {
         this.pageElements = new HashMap<>();
         addPageElements();
+        addCommonElements();
     }
 
     protected abstract void addPageElements();
@@ -34,5 +36,9 @@ public abstract class AbstractElements {
 
     public final ElementsCollection getElementsCollection(Enum name) {
         return $$(getElementSelector(name));
+    }
+
+    private void addCommonElements() {
+        addElement(WELCOME_PANEL, "#welcome-panel");
     }
 }

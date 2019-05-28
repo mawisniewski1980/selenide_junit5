@@ -14,13 +14,13 @@ public interface InterfacesTest {
     Logger log = LoggerFactory.getLogger(AbstractTest.class);
 
     @BeforeAll
-    static void beforeAll() {
+    default void beforeAll() {
         log.info("before all methods - once in a class ................ ");
-        Selenide.open("https://phptravels.com/demo/");
+
     }
 
     @AfterAll
-    static void afterAll() {
+    default void afterAll() {
         log.info("................ after all methods - once in a class ...");
     }
 }
