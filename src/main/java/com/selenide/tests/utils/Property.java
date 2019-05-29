@@ -15,7 +15,7 @@ public enum Property {
     private static final Logger LOG = LoggerFactory.getLogger(Property.class);
 
     private Properties prop = new Properties();
-    private String config = "config.properties";
+    private final String config = "config.properties";
 
     Property() {
         try (InputStream inputStream = Property.class.getClassLoader().getResourceAsStream(config)) {
