@@ -20,6 +20,7 @@ class LoginPageTest extends AbstractTest {
         assertThat(this.pageFactory.newLoginPage().isWelcomePanelVisible()).isTrue();
     }
 
+    @Disabled
     @Test
     @DisplayName("Open test page and LOG in.")
     public void openBasePageParamValue2() {

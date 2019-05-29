@@ -1,5 +1,6 @@
 package com.selenide.tests.abstracts;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.selenide.tests.factories.PageFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -28,6 +29,7 @@ public abstract class AbstractTest {
     void setUp() {
         LOG.info("before each test method - in a class ................ ");
         LOG.info("Open the page: " + URL);
+        Configuration.startMaximized = true;
         Selenide.open(URL);
     }
     

@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+println "Test with Selenide and JUnit5"
+
+group = 'com.selenide.tests'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenLocal()
+    maven {
+        url = 'http://repo.maven.apache.org/maven2'
+    }
+}
+
+ext {
+    selenideVersion = '5.2.3'
+    junitVersion = '5.3.1'
+    assertjVersion = '3.12.2'
+    slf4jVersion = '1.7.25'
+    logbackClassicVersion = '1.2.3'
+}
+
+dependencies {
+    compile "com.codeborne:selenide:${selenideVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+    testCompile "org.assertj:assertj-core:${assertjVersion}"
+    testCompile "org.slf4j:jul-to-slf4j:${slf4jVersion}"
+    testCompile "ch.qos.logback:logback-classic:${logbackClassicVersion}"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+
+    useJUnitPlatform()
+
+    dependsOn 'cleanTest'
+
+    testLogging.showStandardStreams = true
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
