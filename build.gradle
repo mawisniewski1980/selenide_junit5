@@ -7,7 +7,12 @@ println "Test with Selenide and JUnit5"
 
 group = 'com.selenide.tests'
 version = '1.0-SNAPSHOT'
-sourceCompatibility = '1.8'
+
+[compileJava, compileTestJava]*.options.collect {options -> options.encoding = 'UTF-8'}
+[compileJava, compileTestJava]*.options.collect {options -> options.debug = true}
+[compileJava, compileTestJava]*.sourceCompatibility = 1.8
+[compileJava, compileTestJava]*.targetCompatibility = 1.8
+
 
 repositories {
     mavenLocal()
@@ -42,9 +47,7 @@ publishing {
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
+defaultTasks 'clean', 'test'
 
 test {
 

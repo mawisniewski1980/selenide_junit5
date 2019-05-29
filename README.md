@@ -15,3 +15,6 @@
 
 ##### Resources
     https://www.petrikainulainen.net/programming/gradle/getting-started-with-gradle-integration-testing/
+    
+    gradle cleanTest test --tests "com.selenide.tests.pages.LoginPageTest.openBa
+    sePageParamValue"
