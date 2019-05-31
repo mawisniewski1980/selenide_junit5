@@ -2,7 +2,7 @@ package com.selenide.tests.elements;
 
 import com.selenide.tests.abstracts.AbstractElements;
 
-import static com.selenide.tests.enums.EnumElements.*;
+import static com.selenide.tests.enums.Elements.*;
 
 public class LoginElements extends AbstractElements {
 

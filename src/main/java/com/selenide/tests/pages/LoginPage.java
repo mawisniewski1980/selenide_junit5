@@ -7,7 +7,7 @@ import com.selenide.tests.factories.PageFactory;
 import com.selenide.tests.utils.HashUtil;
 import com.selenide.tests.utils.Property;
 
-import static com.selenide.tests.enums.EnumElements.*;
+import static com.selenide.tests.enums.Elements.*;
 
 
 public class LoginPage extends AbstractPage<LoginElements> {

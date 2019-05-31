@@ -30,7 +30,8 @@ public abstract class AbstractTest {
         LOG.info("before each test method - in a class ................ ");
         LOG.info("Open the page: " + URL);
         Configuration.startMaximized = true;
-        Selenide.open(URL);
+        Configuration.baseUrl = URL;
+        Selenide.open("");
     }
     
     @AfterEach

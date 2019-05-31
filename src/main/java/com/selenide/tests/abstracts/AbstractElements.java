@@ -8,7 +8,8 @@ import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.selenide.tests.enums.EnumElements.WELCOME_PANEL;
+import static com.selenide.tests.enums.Elements.H1_PAGE_HEADER;
+import static com.selenide.tests.enums.Elements.WELCOME_PANEL;
 
 public abstract class AbstractElements {
 
@@ -22,7 +23,7 @@ public abstract class AbstractElements {
 
     protected abstract void addPageElements();
 
-    public final void addElement(Enum name, String selector) {
+    protected final void addElement(Enum name, String selector) {
         this.pageElements.put(name, selector);
     }
 
@@ -40,5 +41,6 @@ public abstract class AbstractElements {
 
     private void addCommonElements() {
         addElement(WELCOME_PANEL, "#welcome-panel");
+        addElement(H1_PAGE_HEADER, ".wp-heading-inline");
     }
 }
