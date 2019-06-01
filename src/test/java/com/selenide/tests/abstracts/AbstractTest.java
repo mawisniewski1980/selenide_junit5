@@ -2,8 +2,8 @@ package com.selenide.tests.abstracts;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import com.selenide.tests.factories.PageFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,15 +22,14 @@ public abstract class AbstractTest {
     @BeforeAll
     static void beforeAll() {
         LOG.info("before all methods - once in a class ................ ");
-        WebDriverManager.chromedriver().setup();
+        Configuration.baseUrl = URL;
+        //Configuration.startMaximized = true;
     }
 
     @BeforeEach
     void setUp() {
         LOG.info("before each test method - in a class ................ ");
         LOG.info("Open the page: " + URL);
-        Configuration.startMaximized = true;
-        Configuration.baseUrl = URL;
         Selenide.open("");
     }
     

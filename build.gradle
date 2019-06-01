@@ -3,7 +3,8 @@ plugins {
     id 'maven-publish'
 }
 
-println "Test with Selenide and JUnit5"
+String title = ">>>> Test with Selenide and JUnit5"
+println title
 
 group = 'com.selenide.tests'
 version = '1.0-SNAPSHOT'
@@ -49,8 +50,15 @@ publishing {
 
 defaultTasks 'clean', 'test'
 
+clean {
+    delete 'build', 'out'
+    followSymlinks = true
+}
+
 test {
 
+    //jvmArgs '-Xms128m', '-Xmx1024m', '-XX:MaxPermSize=128m'
+    
     useJUnitPlatform()
 
     dependsOn 'cleanTest'
@@ -60,4 +68,36 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
+    
+   
+    /*maxParallelForks = 4
+    testLogging.showStandardStreams = true
+    systemProperties['testProtocol'] = 'http'
+    systemProperties['testDomain'] = 'djangofan.github.io'
+    systemProperties['testPort'] = 80
+    systemProperties['testUri'] = '/html-test-site/site'
+    systemProperties['hubUrl'] = 'localhost'
+    systemProperties['hubPort'] = '4444'*/
+
+}
+
+
+jar {
+/*
+    archiveBaseName = "selenide_junit5_gradle"
+   
+    manifest {
+        attributes 'Implementation-Title' : title,
+                   'Implementation-Version' : version,
+                    'Created-By' : 'mawisniewski1980',
+                    'Main-Class' : 'com.selenide.tests'
+    }
+
+    from {
+      project.configurations.runtimeClasspath.collect {File file -> project.zipTree(file)}      
+    }
+    
+    println ">>>> basename: $archiveBaseName"
+    println ">>>> manifest: $manifest.attributes"*/
+
 }

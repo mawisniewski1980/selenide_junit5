@@ -1,8 +1,18 @@
 package com.selenide.tests.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 //https://www.includehelp.com/java-programs/encrypt-decrypt-string-using-aes-128-bits-encryption-algorithm.aspx
@@ -10,10 +20,13 @@ public enum HashUtil {
 
     INSTANCE;
 
+    private final Logger logger = LoggerFactory.getLogger(HashUtil.class);
+
+
     private static final String encryptionKey           = "ABCDEFGHIJKLMNOP";
     private static final String characterEncoding       = "UTF-8";
-    private static final String cipherTransformation    = "AES/CBC/PKCS5PADDING";
-    private static final String aesEncryptionAlgorithem = "AES";
+    private static final String cipherTrans = "AES/CBC/PKCS5PADDING";
+    private static final String aes = "AES";
 
 
     /**
@@ -24,17 +37,17 @@ public enum HashUtil {
     public String encrypt(String plainText) {
         String encryptedText = "";
         try {
-            Cipher cipher   = Cipher.getInstance(cipherTransformation);
+            Cipher cipher   = Cipher.getInstance(cipherTrans);
             byte[] key      = encryptionKey.getBytes(characterEncoding);
-            SecretKeySpec secretKey = new SecretKeySpec(key, aesEncryptionAlgorithem);
+            SecretKeySpec secretKey = new SecretKeySpec(key, aes);
             IvParameterSpec ivparameterspec = new IvParameterSpec(key);
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivparameterspec);
             byte[] cipherText = cipher.doFinal(plainText.getBytes("UTF8"));
             Base64.Encoder encoder = Base64.getEncoder();
             encryptedText = encoder.encodeToString(cipherText);
 
-        } catch (Exception E) {
-            System.err.println("Encrypt Exception : "+E.getMessage());
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | UnsupportedEncodingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+            logger.error("Error", e);
         }
         return encryptedText;
     }
@@ -47,17 +60,17 @@ public enum HashUtil {
     public String decrypt(String encryptedText) {
         String decryptedText = "";
         try {
-            Cipher cipher = Cipher.getInstance(cipherTransformation);
+            Cipher cipher = Cipher.getInstance(cipherTrans);
             byte[] key = encryptionKey.getBytes(characterEncoding);
-            SecretKeySpec secretKey = new SecretKeySpec(key, aesEncryptionAlgorithem);
+            SecretKeySpec secretKey = new SecretKeySpec(key, aes);
             IvParameterSpec ivparameterspec = new IvParameterSpec(key);
             cipher.init(Cipher.DECRYPT_MODE, secretKey, ivparameterspec);
             Base64.Decoder decoder = Base64.getDecoder();
-            byte[] cipherText = decoder.decode(encryptedText.getBytes("UTF8"));
-            decryptedText = new String(cipher.doFinal(cipherText), "UTF-8");
+            byte[] cipherText = decoder.decode(encryptedText.getBytes(characterEncoding));
+            decryptedText = new String(cipher.doFinal(cipherText), characterEncoding);
 
-        } catch (Exception E) {
-            System.err.println("decrypt Exception : "+E.getMessage());
+        } catch (NoSuchAlgorithmException | NoSuchPaddingException | UnsupportedEncodingException | InvalidKeyException | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+            logger.error("Error", e);
         }
         return decryptedText;
     }

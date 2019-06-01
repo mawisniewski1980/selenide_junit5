@@ -6,9 +6,6 @@ import static com.selenide.tests.enums.Elements.*;
 
 public class LoginElements extends AbstractElements {
 
-    public LoginElements() {
-    }
-
     @Override
     protected void addPageElements() {
         addElement(LOGIN_FORM, "#loginform");

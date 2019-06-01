@@ -12,7 +12,7 @@ public enum Property {
 
     INSTANCE;
 
-    private static final Logger LOG = LoggerFactory.getLogger(Property.class);
+    private final Logger logger = LoggerFactory.getLogger(Property.class);
 
     private Properties prop = new Properties();
     private final String config = "config.properties";
@@ -21,7 +21,7 @@ public enum Property {
         try (InputStream inputStream = Property.class.getClassLoader().getResourceAsStream(config)) {
             prop.load(inputStream);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error", e);
         }
     }
 
