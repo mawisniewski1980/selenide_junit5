@@ -15,10 +15,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
-//https://www.includehelp.com/java-programs/encrypt-decrypt-string-using-aes-128-bits-encryption-algorithm.aspx
-public enum HashUtil {
-
-    INSTANCE;
+public class HashUtil {
 
     private final Logger logger = LoggerFactory.getLogger(HashUtil.class);
 
@@ -28,6 +25,22 @@ public enum HashUtil {
     private static final String cipherTrans = "AES/CBC/PKCS5PADDING";
     private static final String aes = "AES";
 
+    private volatile static HashUtil instance;
+
+    private HashUtil() {
+    }
+
+    public static HashUtil getInstance() {
+        if (instance == null) {
+            synchronized (HashUtil.class) {
+                if (instance == null) {
+                    instance = new HashUtil();
+                }
+            }
+        }
+
+        return instance;
+    }
 
     /**
      * Method for Encrypt Plain String Data
