@@ -1,8 +1,7 @@
 package com.selenide.tests.pages;
 
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.Selenide;
 import com.selenide.tests.abstracts.AbstractTest;
-import com.selenide.tests.utils.DriverUtil;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,21 +15,15 @@ class LoginPageTest extends AbstractTest {
     @BeforeEach
     void setUp() {
         LOG.info("before each test method - in a class ................ ");
-        DriverUtil.getInstance().setChrome();
-    }
+        Selenide.open("");
 
-    @AfterEach
-    void tearDown() {
-        LOG.info("after each test method - in a class ................ ");
-        WebDriverRunner.clearBrowserCache();
-        WebDriverRunner.closeWebDriver();
+        LOG.info("Opening LOGin page....");
+        this.pageFactory.newLoginPage().logIn();
     }
 
     @Test
-    @DisplayName("Open test page and LOG in.")
+    @DisplayName("Assert LOG in.")
     public void openBasePageParamValue() {
-        LOG.info("Opening LOGin page....");
-        this.pageFactory.newLoginPage().logIn();
 
         assertThat(this.pageFactory.newLoginPage().isWelcomePanelVisible()).isTrue();
     }

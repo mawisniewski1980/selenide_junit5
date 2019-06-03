@@ -17,17 +17,12 @@ public class ProfilePageTest extends AbstractTest {
     @BeforeEach
     void setUp() {
         LOG.info("before each test method - in a class ................ ");
-        DriverUtil.getInstance().setChrome();
+        Selenide.open("");
+
         this.pageFactory.newLoginPage().logIn();
         this.pageFactory.newNavbarTopPage().openProfilePage();
     }
 
-    @AfterEach
-    void tearDown() {
-        LOG.info("after each test method - in a class ................ ");
-        WebDriverRunner.clearBrowserCache();
-        WebDriverRunner.closeWebDriver();
-    }
 
     @Test
     public void changeProfile() {

@@ -43,7 +43,6 @@ public class DriverUtil {
             Configuration.timeout = 6000;
             Configuration.startMaximized = true;
             Configuration.baseUrl = URL;
-            Selenide.open("");
         } else {
             logger.error("NO! File chromedriver.exe not found.");
         }
