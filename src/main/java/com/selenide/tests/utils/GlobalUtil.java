@@ -3,8 +3,6 @@ package com.selenide.tests.utils;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.selenide.tests.enums.Elements.H1_PAGE_HEADER;
-
 
 public class GlobalUtil {
 

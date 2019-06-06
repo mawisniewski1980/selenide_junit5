@@ -32,11 +32,21 @@ public class ProfilePageTest extends AbstractTest {
         this.pageFactory.newProfilePage().clickProfileUpdateButton();
         assertThat("Profile updated.").isEqualTo(this.pageFactory.newProfilePage().getProfileUpdateMessage());
     }
+    @Test
+    public void test1() {
+        LOG.info("test1");
+    }
 
     @Test
-    public void xx() {
-
+    public void test2() {
+        LOG.info("test2");
     }
+
+    @Test
+    public void test3() {
+        LOG.info("test3");
+    }
+
 
 
 }

@@ -16,13 +16,7 @@ public abstract class AbstractTest {
 
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
-    protected final PageFactory pageFactory;
-
-
-    public AbstractTest() {
-        this.pageFactory = new PageFactory();
-
-    }
+    protected final PageFactory pageFactory = new PageFactory();
 
     @BeforeAll
     static void beforeAll() {

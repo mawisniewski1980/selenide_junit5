@@ -25,37 +25,37 @@ public abstract class AbstractElements {
 
     protected abstract void addPageElements();
 
-    protected final void addSelector(Enum name, String selector) {
+    protected void addSelector(Enum name, String selector) {
         this.pageElements.put(name, selector);
     }
 
-    public final String getSelector(Enum name) {
+    public String getSelector(Enum name) {
         return this.pageElements.get(name);
     }
 
-    public final SelenideElement getElement(Enum name) {
+    public SelenideElement getElement(Enum name) {
         return StringUtils.startsWithAny(getSelector(name), XPATHs) ? $x(getSelector(name)) : $(getSelector(name));
     }
 
-    public final ElementsCollection getElementsCollection(Enum name) {
+    public ElementsCollection getElementsCollection(Enum name) {
         return StringUtils.startsWithAny(getSelector(name), XPATHs) ? $$x(getSelector(name)) : $$(getSelector(name));
     }
 
-    public final SelenideElement getElementBy(By by) {
+    public SelenideElement getElementBy(By by) {
         return $(by);
     }
 
-    public final ElementsCollection getElementsCollectionBy(By by) {
+    public ElementsCollection getElementsCollectionBy(By by) {
         return $$(by);
     }
 
-    public final String getChangedSelectorXpath(Enum name, List<String> elementValues) {
+    public String getChangedSelectorXpath(Enum name, List<String> elementValues) {
         StringBuilder selectorBuilder = new StringBuilder(getSelector(name));
         elementValues.forEach(str -> selectorBuilder.append(String.format("[contains(.,'%s')]", str)));
         return selectorBuilder.toString();
     }
 
-    public final SelenideElement getChangedElementXpath(Enum name, List<String> elementValues) {
+    public SelenideElement getChangedElementXpath(Enum name, List<String> elementValues) {
         return $x(getChangedSelectorXpath(name, elementValues));
     }
 

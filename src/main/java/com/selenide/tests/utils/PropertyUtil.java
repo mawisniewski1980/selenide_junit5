@@ -3,7 +3,6 @@ package com.selenide.tests.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Properties;
 
@@ -15,14 +14,8 @@ public class PropertyUtil {
 
     private PropertyUtil() {
 
-        String url = null;
-        URL resource = Thread.currentThread().getContextClassLoader().getResource(config);
-
-        if (resource != null) {
-            url = resource.getFile();
-        }
         this.myProperties = new Properties();
-        try (FileInputStream fileInputStream = new FileInputStream(new File(url))) {
+        try (FileInputStream fileInputStream = new FileInputStream(new File(Thread.currentThread().getContextClassLoader().getResource(config).getFile()))) {
             this.myProperties.load(fileInputStream);
         } catch (IOException exception) {
             exception.printStackTrace();
