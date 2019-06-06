@@ -8,11 +8,11 @@ public class LoginElements extends AbstractElements {
 
     @Override
     protected void addPageElements() {
-        addElement(LOGIN_FORM, "#loginform");
-        addElement(LOGIN_USER_NAME, "#user_login");
-        addElement(LOGIN_PASSWORD, "#user_pass");
-        addElement(LOGIN_REMEMBER_ME_CHECKBOX, "#rememberme");
-        addElement(LOGIN_BUTTON, "#wp-submit");
+        addSelector(LOGIN_FORM, "#loginform");
+        addSelector(LOGIN_USER_NAME, "#user_login");
+        addSelector(LOGIN_PASSWORD, "#user_pass");
+        addSelector(LOGIN_REMEMBER_ME_CHECKBOX, "#rememberme");
+        addSelector(LOGIN_BUTTON, "#wp-submit");
     }
 
 }

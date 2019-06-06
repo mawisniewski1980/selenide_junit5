@@ -62,5 +62,4 @@ public class ProfilePage extends AbstractPage<ProfileElements> {
     }
 
 
-
 }

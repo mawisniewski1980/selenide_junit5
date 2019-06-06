@@ -1,10 +1,7 @@
 package com.selenide.tests.pages;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
 import com.selenide.tests.abstracts.AbstractTest;
-import com.selenide.tests.utils.DriverUtil;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -18,7 +15,6 @@ public class ProfilePageTest extends AbstractTest {
     void setUp() {
         LOG.info("before each test method - in a class ................ ");
         Selenide.open("");
-
         this.pageFactory.newLoginPage().logIn();
         this.pageFactory.newNavbarTopPage().openProfilePage();
     }
@@ -35,8 +31,12 @@ public class ProfilePageTest extends AbstractTest {
         this.pageFactory.newProfilePage().setProfileLanguage("Domyślny dla witryny");
         this.pageFactory.newProfilePage().clickProfileUpdateButton();
         assertThat("Profile updated.").isEqualTo(this.pageFactory.newProfilePage().getProfileUpdateMessage());
+    }
 
-
+    @Test
+    public void xx() {
 
     }
+
+
 }

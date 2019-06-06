@@ -4,6 +4,7 @@ package com.selenide.tests.abstracts;
 import com.codeborne.selenide.WebDriverRunner;
 import com.selenide.tests.factories.PageFactory;
 import com.selenide.tests.utils.DriverUtil;
+import com.selenide.tests.utils.GlobalUtil;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,7 +16,13 @@ public abstract class AbstractTest {
 
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
-    protected PageFactory pageFactory = new PageFactory();
+    protected final PageFactory pageFactory;
+
+
+    public AbstractTest() {
+        this.pageFactory = new PageFactory();
+
+    }
 
     @BeforeAll
     static void beforeAll() {

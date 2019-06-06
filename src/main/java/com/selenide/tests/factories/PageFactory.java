@@ -1,10 +1,10 @@
 package com.selenide.tests.factories;
 
 import com.selenide.tests.elements.LoginElements;
-import com.selenide.tests.elements.NavbarTopElements;
+import com.selenide.tests.elements.NavbarElements;
 import com.selenide.tests.elements.ProfileElements;
 import com.selenide.tests.pages.LoginPage;
-import com.selenide.tests.pages.NavbarTopPage;
+import com.selenide.tests.pages.NavbarPage;
 import com.selenide.tests.pages.ProfilePage;
 
 public class PageFactory {
@@ -13,8 +13,8 @@ public class PageFactory {
         return new LoginPage(this, new LoginElements());
     }
 
-    public NavbarTopPage newNavbarTopPage() {
-        return new NavbarTopPage(this, new NavbarTopElements());
+    public NavbarPage newNavbarTopPage() {
+        return new NavbarPage(this, new NavbarElements());
     }
 
     public ProfilePage newProfilePage() {

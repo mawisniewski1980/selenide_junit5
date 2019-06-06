@@ -3,6 +3,7 @@ package com.selenide.tests.abstracts;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.selenide.tests.factories.PageFactory;
+import com.selenide.tests.utils.GlobalUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,10 +15,12 @@ public abstract class AbstractPage<T extends AbstractElements> {
 
     protected final T pageElements;
     protected final PageFactory pageFactory;
+    protected final GlobalUtil util;
 
     public AbstractPage(PageFactory pageFactory, T pageElements) {
         this.pageFactory = pageFactory;
         this.pageElements = pageElements;
+        this.util = GlobalUtil.getInstance();
     }
 
     public boolean isWelcomePanelVisible() {

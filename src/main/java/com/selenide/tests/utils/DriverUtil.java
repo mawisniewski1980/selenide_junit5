@@ -33,14 +33,15 @@ public class DriverUtil {
 
     public void setChrome() {
 
-        ClassLoader classLoader = getClass().getClassLoader();
-        URL url = classLoader.getResource("exe/chromedriver.exe");
+        String url = null;
+        URL resource = Thread.currentThread().getContextClassLoader().getResource("exe/chromedriver.exe");
 
-        if (url != null) {
-            String driverPath = new File(url.getFile()).getAbsolutePath();
+        if (resource != null) {
+            url = resource.getFile();
+            String driverPath = new File(url).getAbsolutePath();
             System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, driverPath);
             System.setProperty("selenide.browser", "chrome");
-            Configuration.timeout = 6000;
+            Configuration.timeout = 8000;
             Configuration.startMaximized = true;
             Configuration.baseUrl = URL;
         } else {
