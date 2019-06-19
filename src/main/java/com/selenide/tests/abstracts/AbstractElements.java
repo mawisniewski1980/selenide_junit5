@@ -15,7 +15,7 @@ import static com.selenide.tests.enums.Elements.*;
 public abstract class AbstractElements {
 
     private final Map<Enum, String> pageElements;
-    private final String XPATHs[] = {"//", "/", "..", "@"};
+    private final String XPATHs[] = {"//", "/", "(//", "..", "@"};
 
     public AbstractElements() {
         this.pageElements = new HashMap<>();
@@ -58,6 +58,7 @@ public abstract class AbstractElements {
     public SelenideElement getChangedElementXpath(Enum name, List<String> elementValues) {
         return $x(getChangedSelectorXpath(name, elementValues));
     }
+
 
     private void addCommonElements() {
         addSelector(WELCOME_PANEL, "#welcome-panel");
