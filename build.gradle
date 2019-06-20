@@ -33,8 +33,8 @@ ext {
 dependencies {
     compile "com.codeborne:selenide:${selenideVersion}"
     testCompile "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-    testCompile "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     testCompile "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     testCompile "org.assertj:assertj-core:${assertjVersion}"
     testCompile "org.slf4j:jul-to-slf4j:${slf4jVersion}"
     testCompile "ch.qos.logback:logback-classic:${logbackClassicVersion}"
@@ -57,9 +57,26 @@ clean {
 
 test {
 
+    systemProperties System.properties
+
     //jvmArgs '-Xms128m', '-Xmx1024m', '-XX:MaxPermSize=128m'
     
-    useJUnitPlatform()
+    useJUnitPlatform {
+
+        if(getSystemProperties().get("part").equals("profile")) {
+            println '11111111111111111111111111111111111111111111111111111 PROFILE'
+            includeTags 'profile'
+        } else if(getSystemProperties().get("part").equals("login")) {
+            println '22222222222222222222222222222222222222222222222222222 LOGIN'
+            includeTags 'login'
+        } else {
+            println 'BLE BLE BLE BLE'
+        }
+
+        
+       
+
+    }
 
     dependsOn 'cleanTest'
 
@@ -68,8 +85,12 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
-    
-   
+
+    reports {
+        html.enabled = true
+    }
+
+
     /*maxParallelForks = 4
     testLogging.showStandardStreams = true
     systemProperties['testProtocol'] = 'http'

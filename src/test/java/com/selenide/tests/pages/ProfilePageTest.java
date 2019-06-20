@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Tag("profile")
-public class ProfilePageTest extends AbstractTest {
+class ProfilePageTest extends AbstractTest {
 
     @BeforeEach
     void setUp() {
@@ -21,8 +21,8 @@ public class ProfilePageTest extends AbstractTest {
 
 
     @Test
-    public void changeProfile() {
-
+    void changeProfile() {
+        LOG.info("test1 changeProfile");
         this.pageFactory.newProfilePage().setColorScheme(ProfilePage.PROFILE.Midnight);
         this.pageFactory.newProfilePage().setProfileLanguage("Polski");
         this.pageFactory.newProfilePage().clickProfileUpdateButton();
@@ -33,18 +33,18 @@ public class ProfilePageTest extends AbstractTest {
         assertThat("Profile updated.").isEqualTo(this.pageFactory.newProfilePage().getProfileUpdateMessage());
     }
     @Test
-    public void test1() {
-        LOG.info("test1");
+    void test1_ProfilePageTest() {
+        LOG.info("test1 ProfilePageTest");
     }
 
     @Test
-    public void test2() {
-        LOG.info("test2");
+    void test2_ProfilePageTest() {
+        LOG.info("test2 ProfilePageTest");
     }
 
     @Test
-    public void test3() {
-        LOG.info("test3");
+    void test3_ProfilePageTest() {
+        LOG.info("test3 ProfilePageTest");
     }
 
 

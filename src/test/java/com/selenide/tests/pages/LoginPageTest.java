@@ -6,14 +6,10 @@ import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.sound.midi.Soundbank;
-
-import static org.assertj.core.api.Assertions.*;
-
 @Tag("login")
 class LoginPageTest extends AbstractTest {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(LoginPageTest.class);
+    static final Logger LOG = LoggerFactory.getLogger(LoginPageTest.class);
 
     @BeforeEach
     void setUp() {
@@ -32,18 +28,18 @@ class LoginPageTest extends AbstractTest {
     }*/
 
    @Test
-   public void test1() {
-       LOG.info("test1");
+   void test1_LoginPageTest() {
+       LOG.info("test1 LoginPageTest");
    }
 
     @Test
-    public void test2() {
-        LOG.info("test2");
+    void test2_LoginPageTest() {
+        LOG.info("test2 LoginPageTest");
     }
 
     @Test
-    public void test3() {
-        LOG.info("test3");
+    void test3_LoginPageTest() {
+        LOG.info("test3 LoginPageTest");
     }
 
 }
