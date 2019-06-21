@@ -51,7 +51,7 @@ publishing {
 defaultTasks 'clean', 'test'
 
 clean {
-    delete 'build', 'out'
+    delete('out', 'build', 'logs')
     followSymlinks = true
 }
 
@@ -63,18 +63,25 @@ test {
     
     useJUnitPlatform {
 
-        if(getSystemProperties().get("part").equals("profile")) {
-            println '11111111111111111111111111111111111111111111111111111 PROFILE'
-            includeTags 'profile'
-        } else if(getSystemProperties().get("part").equals("login")) {
-            println '22222222222222222222222222222222222222222222222222222 LOGIN'
-            includeTags 'login'
+        if(getSystemProperties().get("part") != null) {
+            String partProp = getSystemProperties().get("part")
+            println "TAGS[" + partProp + "]"
+            
+            if(partProp.equalsIgnoreCase("profile")) {
+             includeTags("profile")
+             excludeTags("login")
+            
+            } else if (partProp.equalsIgnoreCase("login")) {
+             includeTags("login")
+             excludeTags("profile")
+             
+            } else {
+               println 'SOMETHING WRONG - SIC!!!!'
+            }
+            
         } else {
-            println 'BLE BLE BLE BLE'
+            println 'SOMETHING WRONG - SIC!!!!'
         }
-
-        
-       
 
     }
 
