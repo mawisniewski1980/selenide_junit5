@@ -18,3 +18,5 @@
     
     gradle cleanTest test --tests "com.selenide.tests.pages.LoginPageTest.openBa
     sePageParamValue"
+    
+    allure generate -c build\allure-results -o build\allure-report
