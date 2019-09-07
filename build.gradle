@@ -23,8 +23,8 @@ repositories {
 }
 
 ext {
-    selenideVersion = '5.2.3'
-    junitVersion = '5.3.1'
+    selenideVersion = '5.2.7'
+    junitVersion = '5.5.1'
     assertjVersion = '3.12.2'
     slf4jVersion = '1.7.25'
     logbackClassicVersion = '1.2.3'

@@ -8,20 +8,24 @@ import com.selenide.tests.utils.GlobalUtil;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+@ExtendWith(WatcherExtension.class)
 public abstract class AbstractTest {
 
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
     protected final PageFactory pageFactory = new PageFactory();
+    protected static DriverUtil driver;
 
     @BeforeAll
     static void beforeAll() {
         LOG.info("before all methods - once in a class ................ ");
-        DriverUtil.getInstance().setChrome();
+        //DriverUtil.getInstance().setChrome();
+        driver = new DriverUtil();
+        driver.setChrome();
     }
 
     @AfterEach

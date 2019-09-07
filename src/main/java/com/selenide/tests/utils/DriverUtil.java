@@ -11,10 +11,11 @@ public class DriverUtil {
 
     private final Logger logger = LoggerFactory.getLogger(DriverUtil.class);
 
-    private volatile static DriverUtil instance;
+    //private volatile static DriverUtil instance;
 
-    private DriverUtil() {
+    public DriverUtil() {
     }
+/*
 
     public static DriverUtil getInstance() {
         if (instance == null) {
@@ -27,10 +28,11 @@ public class DriverUtil {
 
         return instance;
     }
+*/
 
     public void setChrome() {
-            String driverPath = new File(Thread.currentThread().getContextClassLoader().getResource("exe/chromedriver.exe").getFile()).getAbsolutePath();
-            System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, driverPath);
+            //String driverPath = new File(Thread.currentThread().getContextClassLoader().getResource("exe/chromedriver.exe").getFile()).getAbsolutePath();
+            //System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, driverPath);
             System.setProperty("selenide.browser", "chrome");
             Configuration.timeout = 8000;
             Configuration.startMaximized = true;
