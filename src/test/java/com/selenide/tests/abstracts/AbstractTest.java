@@ -17,7 +17,7 @@ public abstract class AbstractTest {
 
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractTest.class);
 
-    protected final PageFactory pageFactory = new PageFactory();
+    protected PageFactory pageFactory = new PageFactory();
     protected static DriverUtil driver;
 
     @BeforeAll
